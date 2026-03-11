@@ -5,13 +5,13 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #313630;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 24px;
 }
 
 .cards-container {
@@ -20,28 +20,52 @@ body {
     gap: 24px;
     flex-wrap: nowrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 24px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
 }
 
 .card {
-    background-color: #f2f1ed;
+    background-color: #e8ffe4;
     border-radius: 12px;
-    padding: 40px 32px;
+    padding: 40px 40px;
     width: 320px;
     flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+    min-height: 380px;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .card-title {
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
     color: #333;
     margin-bottom: 8px;
 }
 
 .card-price {
-    font-size: 20px;
-    color: #666;
-    margin-bottom: 24px;
+    font-size: 16px;
+    color: #696969;
+    margin-bottom: 20px;
 }
 
 .card-content {
@@ -62,21 +86,21 @@ body {
 .features-list li {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
-    font-size: 15px;
-    color: #333;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #4f4f4f;
 }
 
 .checkmark {
-    color: #4a4a4a;
-    font-size: 18px;
-    margin-right: 12px;
+    color: #4f4f4f;
+    font-size: 14px;
+    margin-right: 8px;
     font-weight: bold;
 }
 
 .download-button {
     width: fit-content;
-    background-color: #e6e5e0;
+    background-color: #83ff70;
     border: none;
     border-radius: 999px;
     padding: 14px 24px;
@@ -84,13 +108,39 @@ body {
     font-weight: 500;
     color: #333;
     cursor: pointer;
+    margin-top: auto;
     transition: background-color 0.2s ease;
 }
 
 .download-button:hover {
-    background-color: #D8D6CE;
+    background-color: #5fe74a;
 }
 
 .download-button:active {
-    background-color: #D8D6CE;
+    background-color: #44c431;
+}
+
+.download-button.primary {
+    background-color: rgb(191, 255, 181);
+}
+
+
+.firework-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: firework-explode 700ms ease-out forwards;
+}
+
+@keyframes firework-explode {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--fx), var(--fy)) scale(0.8);
+        opacity: 0;
+    }
 }
