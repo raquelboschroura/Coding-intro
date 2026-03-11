@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing Plans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="cards-container">
         <div class="card">
-            <h1 class="card-title">Hobby</h1>
+            <h1 class="card-title">Catherine</h1>
             <p class="card-price">Free</p>
             <div class="card-content">
                 <p class="includes-text">Includes:</p>
@@ -28,10 +31,10 @@
                     </li>
                 </ul>
             </div>
-            <button class="download-button">Download</button>
+            <button class="download-button primary">Download</button>
         </div>
         <div class="card">
-            <h1 class="card-title">Pro</h1>
+            <h1 class="card-title">Sam</h1>
             <p class="card-price">$20/mo.</p>
             <div class="card-content">
                 <p class="includes-text">Everything in Hobby, plus:</p>
@@ -56,6 +59,62 @@
             </div>
             <button class="download-button">Get Pro</button>
         </div>
+        <div class="card">
+            <h1 class="card-title">Connie</h1>
+            <p class="card-price">$100/mo.</p>
+            <div class="card-content">
+                <p class="includes-text">Everything in Pro, plus:</p>
+                <ul class="features-list">
+                    <li>
+                        <span class="checkmark">✓</span>
+                        Unlimited Agent requests
+                    </li>
+                    <li>
+                        <span class="checkmark">✓</span>
+                        Unlimited Tab completions
+                    </li>
+                </ul>
+            </div>
+            <button class="download-button primary">Contact Us</button>
+        </div>
     </div>
+
+    <script>
+        function spawnFireworks(x, y) {
+            const colors = ['#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#FF6FDB'];
+            const particleCount = 24;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const distance = 60 + Math.random() * 40;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.setProperty('--fx', dx + 'px');
+                particle.style.setProperty('--fy', dy + 'px');
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 700);
+            }
+        }
+
+        document.querySelectorAll('.download-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const rect = button.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                spawnFireworks(x, y);
+            });
+        });
+    </script>
 </body>
 </html>
